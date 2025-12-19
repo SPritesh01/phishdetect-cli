@@ -1,0 +1,73 @@
+Delivered-To: s.pritesh1112@gmail.com
+Received: by 2002:a05:6e04:4613:b0:3a3:cfb8:aa8a with SMTP id bv19csp2361661imd;
+        Mon, 24 Nov 2025 15:55:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHvqRomG9sqNveP5DTivFs78H21JFnZosR5CKxFzlA7VZ0T7G4/5z+rdGdOheEbj7Sqqm7p
+X-Received: by 2002:a05:7300:828d:b0:2a4:3593:ccc2 with SMTP id 5a478bee46e88-2a718664dbdmr5789489eec.9.1764028503934;
+        Mon, 24 Nov 2025 15:55:03 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764028503; cv=none;
+        d=google.com; s=arc-20240605;
+        b=bRzY5yoe0G+261ofPuYiovNxpU6mkKhXzG505poyzkMxGbVDGlk87aPT45rwfrnZdy
+         Hui5WSHCp0MoK0Actxl1bxfWWMZaTCrqDrjRUhJN1JkEtqZwoVxhEFEiIjcYOTdjNnNA
+         xhYVTRKLN6o6yr0QDff5Hle5wOkHnbgBiNKs1Fm7W0AzdkYHGQcU9H/9PriQ4qU+GL+0
+         FmdB4drXRr0gf6ixahOExm75cR6jrjm4VZ4ZtfYSJC/9j4hp8MBYNUlSaih9idXDVpjD
+         WKOomPXqK1m2jJgvkpQorBNzk9QnRfsjhtSBrurPMq2MFDW9wQ+Bw6UhyDvo/xu19ygg
+         U6cg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:reply-to;
+        bh=pLAapGJJ25mspVdDrL6uuN3TBPEZR6zcyxF9Z9bLsek=;
+        fh=/YmI4dWmU8cgWqd9NYg3jojzRvnCGhAl/Bbuj1GtgzQ=;
+        b=iX8zHDk7/vL8vN34X7CtgpjB00yxEqJRROiFcxTDu/5qFKtk0DBRbQIcHUqp0pf0Dg
+         jiZTsQgbuNtdPeLbyPiy5ztpiHYC26PkQ+9zZkDsqIkbYOjCZU7cXQUuyIA7tlGjPFip
+         /WdxJLz05It1lH9qVruPYZmaMu83tf1We++oXV/y9z3NOsrVcIkh6Y5o+Qesg2+X92as
+         BxIR4VocT0blBN8GAPVjBXF5GftR1K/BVzEEqhzMJmooH2dKk6H+plFM/JxZlnfb5AWa
+         +9nS64na3NWDT+a0MnrMBC1ugXUI9cmQ7JTwXRX/HctOH0QpwYE5meEz4Z8AFl2wbwgD
+         4N2g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of davide@foothill.net designates 216.171.192.225 as permitted sender) smtp.mailfrom=davide@foothill.net;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=foothill.net
+Return-Path: <davide@foothill.net>
+Received: from smtp01.exwire.com (smtp01.exwire.com. [216.171.192.225])
+        by mx.google.com with ESMTPS id 5a478bee46e88-2a6fc4ff162si22279682eec.103.2025.11.24.15.55.03
+        for <s.pritesh1112@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 24 Nov 2025 15:55:03 -0800 (PST)
+Received-SPF: pass (google.com: domain of davide@foothill.net designates 216.171.192.225 as permitted sender) client-ip=216.171.192.225;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of davide@foothill.net designates 216.171.192.225 as permitted sender) smtp.mailfrom=davide@foothill.net;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=foothill.net
+Received: from localhost (localhost [127.0.0.1])
+	by smtp01.exwire.com (Postfix) with ESMTP id 73B6946AE93
+	for <s.pritesh1112@gmail.com>; Mon, 24 Nov 2025 09:12:37 -0800 (PST)
+X-Virus-Scanned: Debian amavisd-new at smtp01.exwire.com
+Received: from smtp01.exwire.com ([127.0.0.1])
+	by localhost (smtp01.exwire.com [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id rA-bD172OsMQ for <s.pritesh1112@gmail.com>;
+	Mon, 24 Nov 2025 09:12:37 -0800 (PST)
+Received: from [103.90.149.12] (unknown [119.13.156.113])
+	by smtp01.exwire.com (Postfix) with ESMTPSA id A4C8B46AE6B
+	for <s.pritesh1112@gmail.com>; Mon, 24 Nov 2025 09:12:34 -0800 (PST)
+Reply-To: knmavisz@gmail.com
+From: Mrs. Mavis <davide@foothill.net>
+To: s.pritesh1112@gmail.com
+Subject: Donation
+Date: 25 Nov 2025 00:12:31 +0700
+Message-ID: <20251125001231.BFCD4702C2D78A16@foothill.net>
+MIME-Version: 1.0
+Content-Type: text/html
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML>
+
+<html><head><title></title>
+<meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+</head>
+<body style=3D"margin: 0.4em; font-size: 14pt;">
+Congratulations! You&#8217;ve been randomly selected to receive a $3,500,00=
+0 USD donation from Mrs. Mavis L. Wanczyk, winner of the $758 million Mega =
+Millions Jackpot.<br><br>This donation is part of her personal charitable o=
+utreach to support individuals worldwide.<br><br>Your Donation Code: US5063=
+28<br><br>Please reply with your code to confirm and begin the claim proces=
+s.<br>Thank you for being part of this goodwill initiative.<br><br>Regards,=
+<br><br>Mavis<br><p></p></body></html>

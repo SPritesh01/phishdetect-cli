@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishdetect"
+version = "0.1.0"
+description = "CLI phishing email detection tool"
+requires-python = ">=3.10"
+dependencies = [
+  "rich",
+  "reportlab",
+  "stix2",
+  "tldextract",
+  "idna",
+  "oletools",
+  "requests"
+]
+
+[project.scripts]
+phishdetect = "helper.phishdetect:main"
+
+[tool.setuptools]
+packages = ["helper"]

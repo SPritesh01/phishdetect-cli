@@ -1,0 +1,620 @@
+Delivered-To: s.pritesh1112@gmail.com
+Received: by 2002:ac0:eb48:0:b0:3a3:cfb8:aa8a with SMTP id s8csp162199imu;
+        Wed, 17 Dec 2025 05:57:33 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHofPEj42uX6+fzYfzW8WCb41c3l6qfgSu8O1V11Xm7B5v434W35QbIMV8wOm7/Tr546NxX
+X-Received: by 2002:a0c:c20f:0:b0:888:81f8:6470 with SMTP id 6a1803df08f44-88881f8678cmr205308716d6.24.1765979852736;
+        Wed, 17 Dec 2025 05:57:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1765979852; cv=none;
+        d=google.com; s=arc-20240605;
+        b=emit27ZgUIYQ2OpNIIrCMZSuQHd5RPsW7pFzFadNXxUMcX0Aup/DoC6HUzkB0xTMIX
+         5LYnZtMGR6w4mhhgTK+5GHj4S+dHAMtaePc0W12AcO0GJ2K0QB5KNlb7kM51ZXxvcNe6
+         5CvI5pwE368PrY5khohrtNQg6mRwu978fPpG1CzFkPNc5FLtqzL57bt0Na39WI3tV60u
+         U/+44WftFSQ+GDyllIfJQX5i9C3n7bnjxkyatQN6KU7BJXorryEUBgIjoC8I7nGTPV+C
+         uXsP7LUobUh4CHndgllN0Yu6sTmP7Qx+ahMwIqsByKXGUqKLK8mk0xM4VSwpEMBpijkD
+         tw5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:precedence:mime-version:subject:message-id:cc:to
+         :reply-to:from:date:dkim-signature:dkim-signature;
+        bh=EdMq0glghRPp0kHiByWibjwXNozQsUOAFy/WWerGZoU=;
+        fh=Cm2GD2xZsa0pNT8TmlCzUI64t+6pp6LeVhHp1dGsCVU=;
+        b=UWUkDuSqznkzRpBU9YZ9I1AaVkX2Vf7j6XZ7Y6E2hOYliaTdj6R/5rOWRCCAPw5TQe
+         i5NXtTHP/u3Bm6KixY7nUhT9Kr7uemq4RbmKc4gA4QRxSdh+iv9KDZB5Vb2Vm4KyopUC
+         2z0NqxSkTrMEqyzkBRSAdXF2BIdMYZp3y2tSawGXJyMiQjMT55ziiz9X2n7cGL4lrHz8
+         fvAhXzlZgue+J9NRdO4PsIINAeGtTo5eTHTAH3J3fmpbIQOpjmfDIjGDeGGzJ5HDQUH3
+         5pDlUlzU1imCcdErF8siOsBKYW/8hzOncD8/cSXQTZJJgmYCSjr6sFl/wN+K+rHnrEIF
+         mSxg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.perplexity.ai header.s=pvaqpelevmk57ovqno6vcegbltm6sbnt header.b=zf9Ywn2q;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YkjBvMfd;
+       spf=pass (google.com: domain of 0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai designates 24.110.89.109 as permitted sender) smtp.mailfrom=0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=perplexity.ai
+Return-Path: <0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai>
+Received: from i89-109.smtp-out.amazonses.com (i89-109.smtp-out.amazonses.com. [24.110.89.109])
+        by mx.google.com with ESMTPS id 6a1803df08f44-889a870346csi133495526d6.698.2025.12.17.05.57.32
+        for <s.pritesh1112@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 17 Dec 2025 05:57:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of 0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai designates 24.110.89.109 as permitted sender) client-ip=24.110.89.109;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.perplexity.ai header.s=pvaqpelevmk57ovqno6vcegbltm6sbnt header.b=zf9Ywn2q;
+       dkim=pass header.i=@amazonses.com header.s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw header.b=YkjBvMfd;
+       spf=pass (google.com: domain of 0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai designates 24.110.89.109 as permitted sender) smtp.mailfrom=0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@envelope.mail.perplexity.ai;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=perplexity.ai
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=pvaqpelevmk57ovqno6vcegbltm6sbnt; d=mail.perplexity.ai;
+	t=1765979852;
+	h=Date:From:Reply-To:To:Cc:Message-ID:Subject:MIME-Version:Content-Type;
+	bh=wKKKzjN0WNdkNFL3HLqXBU51SBWryPVIc+GbQgnWEXo=;
+	b=zf9Ywn2qawq/mbKdOp7DbiDbfR6c/cp71iE/jowx4SIFZf8e4/mMxT3VQ+iEHMDe
+	Fi7k9wV5heYHWbSBRCEg++hREfuJWesenKCAMZjsuMRrC/DiRtAjFRRDY5QFcO5Ue+B
+	qf6+zs3sBV6wGNBSGv5lJCha0x4z3aF98vzUtVwhPvzZ3dhsleho1mGFD3P/lK20Z8v
+	WlSD/yX885qLptpxzPj2DMavl/YRaO43PRRcDS9ropnTUEtzIKVTedshTZYWntx2Tlb
+	FW75qhQ1umuYcUf/GRF/G+vkXLFcd18BOVA2n+2eTDkkxEXjDLp2RY+UDR6TJ/MuZYQ
+	8c0G7S0naQ==
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=6gbrjpgwjskckoa6a5zn6fwqkn67xbtw; d=amazonses.com; t=1765979852;
+	h=Date:From:Reply-To:To:Cc:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=wKKKzjN0WNdkNFL3HLqXBU51SBWryPVIc+GbQgnWEXo=;
+	b=YkjBvMfdUSk/OaXjjZJPVhN4ZAFxEu5MCfcXL91NUyw6AboR4l5581eszXr6OwA1
+	ciPYlsenUAxLrJCjdn/7NgMgKcan65BO6N8lbWXyFR0wEGQJAckEC9oKF1PA1qdAcNO
+	2AHttyPHoFwWSsRj/bqkXD6SFtfnu5DtXOpamg4M=
+Date: Wed, 17 Dec 2025 13:57:32 +0000
+From: Perplexity <team@mail.perplexity.ai>
+Reply-To: Perplexity <team@perplexity.ai>
+To: s.pritesh1112@gmail.com
+Cc: 
+Message-ID: <0100019b2c9a0de6-fbb4c6f9-cae4-49a7-accd-c3eb2a7f03ea-000000@email.amazonses.com>
+Subject: Sign in to Perplexity
+MIME-Version: 1.0
+Precedence: Bulk
+X-Auto-Response-Suppress: All
+Content-Type: multipart/alternative; boundary=7x2w1vgtv7r
+Feedback-ID: ::1.us-east-1.1nRXWOT+ETvogqnAUaOa7HjKGx1p40xVES7T8DfH/Gc=:AmazonSES
+X-SES-Outgoing: 2025.12.17-24.110.89.109
+
+--7x2w1vgtv7r
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+ 
+
+https://www.perplexity.ai/api/auth/callback/email?callbackUrl=https%3A%2F%2Fwww.perplexity.ai%2Fapi%2Fauth%2Fsignin-callback%3Fredirect%3Dhttps%253A%252F%252Fwww.perplexity.ai%252Fsearch%252Fgive-me-the-exact-steps-how-to-ha6esQtpR5WEC3qiAR9vdA%253Flogin-source%253DsignupButton%2523locale%253Den-US&token=332544&email=s.pritesh1112%40gmail.com
+
+
+Sign in to your account
+
+ 
+
+Sign in
+[https://www.perplexity.ai/api/auth/callback/email?callbackUrl=https%3A%2F%2Fwww.perplexity.ai%2Fapi%2Fauth%2Fsignin-callback%3Fredirect%3Dhttps%253A%252F%252Fwww.perplexity.ai%252Fsearch%252Fgive-me-the-exact-steps-how-to-ha6esQtpR5WEC3qiAR9vdA%253Flogin-source%253DsignupButton%2523locale%253Den-US&token=332544&email=s.pritesh1112%40gmail.com]
+
+
+
+This link and code will only be valid for the next 5 minutes. If the link does not work, you can use the login verification code
+directly:
+ 
+332544
+ 
+ 
+If you did not request this, you can safely ignore it. For any issues, please contact support@perplexity.ai
+ 
+
+--7x2w1vgtv7r
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html lang=3D"en" dir=3D"auto" xmlns=3D"http://www.w3.=
+org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" =
+xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+style=3D"background-color: transparent;">
+  <head>
+    <title>Sign in to =
+Perplexity</title>
+    <!--[if !mso]><!-->
+    <meta =
+http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+    <!--<![endif]-->
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; =
+charset=3DUTF-8">
+    <meta name=3D"viewport" content=3D"width=3Ddevice-wid=
+th, initial-scale=3D1">
+    <style type=3D"text/css">
+      #outlook a { padding:0; }
+      body { margin:0;padding:0;-webkit-tex=
+t-size-adjust:100%;-ms-text-size-adjust:100%; }
+      table, td { =
+border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt; }
+      img { border:0;height:auto;line-height:100%; outline:none;text-decora=
+tion:none;-ms-interpolation-mode:bicubic; }
+      p { =
+display:block;margin:13px 0; }
+    </style>
+    <!--[if mso]>
+    <noscript>
+    <xml>
+    <o:OfficeDocumentSettings>
+      <o:AllowPNG/>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+    </o:OfficeDocumentSettings>
+    </xml>
+    </noscript>
+    <![endif]-->
+    <!--[if lte mso 11]>
+    <style type=3D"text/css">
+      .mj-outlook-group-fix { width:100% !=
+important; }
+    </style>
+    <![endif]-->
+   =20
+   =20
+    <style type=3D"text/css">
+      @media only screen and =
+(min-width:480px) {
+        .mj-column-per-100 { width:100% !important; =
+max-width: 100%; }
+      }
+    </style>
+    <style media=3D"screen and =
+(min-width:480px)">
+      .moz-text-html .mj-column-per-100 { width:100% !=
+important; max-width: 100%; }
+    </style>
+   =20
+   =20
+ =20
+   =20
+    <style type=3D"text/css">
+
+    @media only screen and (max-width:479px)=
+ {
+      table.mj-full-width-mobile { width: 100% !important; }
+      td.mj-full-width-mobile { width: auto !important; }
+    }
+ =20
+    </style>
+    =20
+    <style type=3D"text/css">
+.wfix {
+          max-width: 600px !important;
+        }
+       =20
+        @media(max-width: 480px) {
+          .body-image-mobile-width-240 =
+td { width: 240px !important; }
+          .body-image td  { max-width: 100%=
+ !important; }
+          .body-image img  { box-sizing: border-box; }
+          .social-icon-mobile-spacer {
+            display: inline-block !=
+important;
+          }
+        }
+       =20
+    .mobile-only { display: =
+none !important; } .desktop-only { display: block !important; }
+    @media(max-width: 480px) { .column-stack { width: 100% !important; =
+max-width: 100% !important; display: block !important; } .column-stack td,.=
+column-stack th { padding-left: 0 !important; padding-right: 0 !important; =
+} .mobile-only { display: block !important; } .desktop-only { display: none=
+ !important; } }
+    </style>
+    <style>
+          .wrapper {
+            padding: 0 12px;
+          }
+
+          /* Superhuman selector =
+*/
+          .ShadowHTML .wrapper {
+            padding: 0 !important;
+          }
+        =20
+        =20
+        =20
+        =20
+  .ShadowHTML :is(.styleUnquotedContent .unquoted-content, .=
+styleUnquotedContent .sh-unquoted-content, .styleQuotedContent .=
+sh-quoted-content, .sh-signature, .Signature-settings) :is(td.=
+column-container, div[class^=3D"mj-column-per-"]){font-size:0!important}
+  html.sh-color :is(td.column-container, div[class^=3D"mj-column-per-"], =
+div.mj-column-per-100.mj-outlook-group-fix){font-size:0!important}
+  @media(max-width:480px){
+    html.sh-color .column-stack{width:100%!=
+important;max-width:100%!important;display:block!important}
+    html.sh-color :is(.column-stack td,.column-stack th){padding-left:0!=
+important;padding-right:0!important;width:100%!important;max-width:100%!=
+important;display:block!important}
+    html.sh-color :is(.column-stack, .=
+column-stack *){word-break:break-word!important;overflow-wrap:anywhere!=
+important}
+    html.sh-color :is(.column-persist, .column-persist =
+*){word-break:break-word!important;overflow-wrap:anywhere!important}
+  }
+  html.sh-color a[href^=3D"tel:"]{color:inherit!important;text-decoration:n=
+one!important;font-size:inherit!important;line-height:inherit!=
+important;letter-spacing:inherit!important;vertical-align:baseline!=
+important}
+
+        =20
+      .isMarketing { background-color: transparent =
+!important; }
+      .isMarketing .styled-primary-column { background-color:=
+ #13343B !important; border-radius: 8px; }
+   =20
+        =20
+         [class~=3D"x_social-icon-dark-mode"] { display: none !important; =
+mso-hide:all;  width: 0px !important; padding: 0px !important; }
+
+          /* Gmail selectors */
+          u + .body .wrapper {
+            padding: 0 !important;
+          }
+          div > u + .body .=
+wrapper {
+            padding: 0 !important;
+          }
+         =20
+    a { text-decoration: none; color: #fff; }
+   =20
+ =20
+         =20
+         =20
+          .link-unsubscribe { color: #9ca3af !important; }
+          </style>
+<meta name=3D"color-scheme" content=3D"light">
+          <meta name=3D"supported-color-schemes" content=3D"light">
+  </head>
+  <body class=3D"body" style=3D"word-spacing:normal;background-co=
+lor:transparent;">
+   =20
+   =20
+      <div aria-label=3D"Sign in to =
+Perplexity" aria-roledescription=3D"email" class=3D"email-body" =
+style=3D"background-color:transparent;" role=3D"article" lang=3D"en" =
+dir=3D"auto">
+        <!--[if mso]><style type=3D"text/css"> a { =
+text-decoration: underline !important; } .button a { text-decoration: none =
+!important; } .outlook-list-fix { margin-left:4px !important; } .=
+outlook-break-full-link { word-break: break-all !important; } .=
+outlook-hide-social-icon { display: none !important; mso-hide:all; width: =
+0px !important; padding: 0px !important; } .outlook-hide-social-icon * { =
+display: none !important; mso-hide:all; width: 0px !important; padding: 0px=
+ !important; } .outlook-hide-social-icon table { display: none !important; =
+mso-hide:all; width: 0px !important; padding: 0px !important; } .=
+outlook-hide-social-icon tbody { display: none !important; mso-hide:all; =
+width: 0px !important; padding: 0px !important; } .outlook-hide-social-icon=
+ tr { display: none !important; mso-hide:all; width: 0px !important; =
+padding: 0px !important; } .outlook-hide-social-icon td { display: none !=
+important; mso-hide:all; width: 0px !important; padding: 0px !important; } =
+.outlook-hide-social-icon img { display: none !important; mso-hide:all; =
+width: 0px !important; padding: 0px !important; } .outlook-hide-social-icon=
+ a { display: none !important; mso-hide:all; width: 0px !important; =
+padding: 0px !important; }
+</style><table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"wfix-outlook =
+gmail-no-padding-outlook wrapper-outlook" role=3D"presentation" =
+style=3D"width:600px;" width=3D"600" ><tr><td style=3D"line-height:0px;font=
+-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+   =20
+     =20
+      <div class=3D"wfix gmail-no-padding wrapper" style=3D"margin:0px =
+auto;max-width:600px;">
+       =20
+        <table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+style=3D"width:100%;">
+          <tbody>
+            <tr>
+              <td style=3D"direction:ltr;font-size:0px;padding:20px =
+0;padding-top:0;text-align:center;">
+                <!--[if mso | =
+IE]><table role=3D"presentation" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0"><tr><td class=3D"wfix-outlook" width=3D"600px" ><table =
+align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+class=3D"wfix-outlook" role=3D"presentation" style=3D"width:600px;" =
+width=3D"600" ><tr><td style=3D"line-height:0px;font-size:0px;mso-line-heig=
+ht-rule:exactly;"><![endif]-->
+   =20
+     =20
+      <div class=3D"wfix" =
+style=3D"margin:0px auto;max-width:600px;">
+       =20
+        <table align=3D"center" border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style=3D"width:100%;">
+          <tbody>
+            <tr>
+              <td =
+style=3D"direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0px;padd=
+ing-left:0px;padding-right:0px;padding-top:0px;text-align:center;">
+                <!--[if mso | IE]><table role=3D"presentation" border=3D"0"=
+ cellpadding=3D"0" cellspacing=3D"0"><tr><td align=3D"center" =
+class=3D"wfix-outlook rounded-corners-outlook styled-primary-column-outlook=
+" style=3D"vertical-align:top;width:600px;" ><![endif]-->
+           =20
+      <div class=3D"mj-column-per-100 mj-outlook-group-fix wfix =
+rounded-corners styled-primary-column" style=3D"font-size:0px;text-align:le=
+ft;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+       =20
+      <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+role=3D"presentation" width=3D"100%" style=3D"border-collapse: separate;">
+        <tbody>
+          <tr>
+            <td style=3D"background-color:#1=
+3343B;border-radius:8px;vertical-align:top;border-collapse:separate;padding=
+-top:40px;padding-right:20px;padding-bottom:40px;padding-left:20px;">
+             =20
+      <table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style width=3D"100%">
+        <tbody>
+         =20
+              <tr>
+                <td =
+align=3D"left" style=3D"font-size:0px;padding:10px 25px;padding-top:4px;pad=
+ding-right:0px;padding-bottom:4px;padding-left:0px;word-break:break-word;">
+                 =20
+      <div style=3D"font-family:ui-sans-serif, =
+sans-serif;font-size:16px;letter-spacing:0px;line-height:24px !=
+important;text-align:left;color:#ffffff;"><span>&nbsp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" class=3D"body-image =
+body-image-mobile-width-240" style=3D"font-size:0px;padding:10px =
+25px;padding-top:4px;padding-right:0px;padding-bottom:4px;padding-left:0px;=
+word-break:break-word;">
+                 =20
+      <table border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" =
+style=3D"border-collapse:collapse;border-spacing:0px;">
+        <tbody>
+          <tr>
+            <td style=3D"width:240px;">
+             =20
+        <a href=3D"https://www.perplexity.ai/api/auth/callback/email?=
+callbackUrl=3Dhttps%3A%2F%2Fwww.perplexity.ai%2Fapi%2Fauth%2Fsignin-callbac=
+k%3Fredirect%3Dhttps%253A%252F%252Fwww.perplexity.ai%252Fsearch%252Fgive-me=
+-the-exact-steps-how-to-ha6esQtpR5WEC3qiAR9vdA%253Flogin-source%253DsignupB=
+utton%2523locale%253Den-US&token=3D332544&email=3Ds.pritesh1112%40gmail.=
+com" target=3D"_blank" style=3D"text-decoration: none; color: #fff;">
+         =20
+      <img alt src=3D"https://d3b9kr64nievew.cloudfront.=
+net/clyp42u17004ed9weksnqs6op/clyp42u39004fd9wee8hp9fsw.png" =
+style=3D"border:0;border-radius:0px;display:block;outline:none;text-decorat=
+ion:none;height:auto;width:100%;font-size:13px;" width=3D"240" =
+height=3D"auto">
+   =20
+        </a>
+     =20
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" style=3D"font-size:0px;padding:10px =
+25px;padding-top:12px;padding-right:0px;padding-bottom:4px;padding-left:0px=
+;word-break:break-word;">
+                 =20
+      <div =
+style=3D"font-family:ui-sans-serif, sans-serif;font-size:20px;letter-spacin=
+g:0px;line-height:25px !important;text-align:center;color:#ffffff;"><h3 =
+style=3D"padding: 0; margin: 0; font-weight: 500; color: #fff; font-size: =
+20px; line-height: 25px !important; font-size: 20px !important;"><span =
+style=3D"line-height: 25px !important; font-size: 20px; font-size: 20px !=
+important; white-space: pre-wrap;">Sign in to your account</span></h3></div=
+>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"left" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:4px;padding-right:0px;=
+padding-bottom:4px;padding-left:0px;word-break:break-word;">
+                 =20
+      <div style=3D"font-family:ui-sans-serif, =
+sans-serif;font-size:16px;letter-spacing:0px;line-height:24px !=
+important;text-align:left;color:#ffffff;"><span>&nbsp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" class=3D"button sh-button" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:4px;padding-right:0px;=
+padding-bottom:4px;padding-left:0px;word-break:break-word;">
+                 =20
+      <table border=3D"0" cellpadding=3D"0" =
+cellspacing=3D"0" role=3D"presentation" style=3D"border-collapse:separate;l=
+ine-height:100%;">
+        <tbody>
+          <tr>
+            <td =
+align=3D"center" bgcolor=3D"#20808D" role=3D"presentation" =
+style=3D"border:none;border-radius:100px;cursor:auto;mso-padding-alt:14px=
+=20
+  24px;background:#20808D;" valign=3D"middle">
+              <a =
+href=3D"https://www.perplexity.ai/api/auth/callback/email?=
+callbackUrl=3Dhttps%3A%2F%2Fwww.perplexity.ai%2Fapi%2Fauth%2Fsignin-callbac=
+k%3Fredirect%3Dhttps%253A%252F%252Fwww.perplexity.ai%252Fsearch%252Fgive-me=
+-the-exact-steps-how-to-ha6esQtpR5WEC3qiAR9vdA%253Flogin-source%253DsignupB=
+utton%2523locale%253Den-US&token=3D332544&email=3Ds.pritesh1112%40gmail.=
+com" style=3D"display: inline-block; background: #20808D; color: #ffffff; =
+font-family: ui-sans-serif, sans-serif; font-weight: normal; margin: 0; =
+text-decoration: none; text-transform: none; padding: 14px=20
+  24px; mso-padding-alt: 0px; border-radius: 100px; font-size: 18px !=
+important; line-height: 18px !important;" target=3D"_blank" =
+class=3D"sh-preserve-color">
+                Sign in
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" class=3D"divider dark-force" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:24px;padding-right:0px=
+;padding-bottom:24px;padding-left:0px;word-break:break-word;">
+                 =20
+      <p style=3D"border-top:solid 1px =
+#13343B;font-size:1px;margin:0px auto;width:100%;">
+      </p>
+     =20
+      <!--[if mso | IE]><table align=3D"center" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" style=3D"border-top:solid 1px =
+#13343B;font-size:1px;margin:0px auto;width:560px;" role=3D"presentation" =
+width=3D"560px" ><tr><td style=3D"height:0;line-height:0;"> &nbsp;
+</td></tr></table><![endif]-->
+   =20
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" style=3D"font-size:0px;padding:10px =
+25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;=
+word-break:break-word;">
+                 =20
+      <div =
+style=3D"font-family:ui-sans-serif, sans-serif;font-size:16px;letter-spacin=
+g:0px;line-height:24px !important;text-align:center;color:#ffffff;"><span =
+style=3D"color: #BEBEBE; line-height: 24px !important; font-size: 16px; =
+font-size: 16px !important; white-space: pre-wrap;">This link and code will=
+ only be valid for the next 5 minutes. If the link does not work, you can =
+use the login verification code directly:</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"left" style=3D"font-size:0px;padding:10px =
+25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;=
+word-break:break-word;">
+                 =20
+      <div =
+style=3D"font-family:ui-sans-serif, sans-serif;font-size:16px;letter-spacin=
+g:0px;line-height:24px !important;text-align:left;color:#ffffff;"><span>&nb=
+sp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;=
+padding-bottom:0px;padding-left:0px;word-break:break-word;">
+                 =20
+      <div style=3D"font-family:ui-sans-serif, =
+sans-serif;font-size:16px;letter-spacing:0px;line-height:24px !=
+important;text-align:center;color:#ffffff;"><span style=3D"line-height: =
+24px !important; font-size: 16px; font-size: 16px !important; white-space: =
+pre-wrap;">332544</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" style=3D"font-size:0px;padding:10px =
+25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;=
+word-break:break-word;">
+                 =20
+      <div =
+style=3D"font-family:ui-sans-serif, sans-serif;font-size:16px;letter-spacin=
+g:0px;line-height:24px !important;text-align:center;color:#ffffff;"><span>&=
+nbsp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:0px;padding-right:0px;=
+padding-bottom:0px;padding-left:0px;word-break:break-word;">
+                 =20
+      <div style=3D"font-family:ui-sans-serif, =
+sans-serif;font-size:16px;letter-spacing:0px;line-height:24px !=
+important;text-align:center;color:#ffffff;"><span>&nbsp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"center" =
+style=3D"font-size:0px;padding:10px 25px;padding-top:4px;padding-right:0px;=
+padding-bottom:4px;padding-left:0px;word-break:break-word;">
+                 =20
+      <div style=3D"font-family:ui-sans-serif, =
+sans-serif;font-size:14px;letter-spacing:0px;line-height:21px !=
+important;text-align:center;color:#ffffff;"><span style=3D"line-height: =
+21px !important; font-size: 14px; font-size: 14px !important; white-space: =
+pre-wrap;">If you did not request this, you can safely ignore it. For any =
+issues, please contact support@perplexity.ai</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+              <tr>
+                <td align=3D"left" style=3D"font-size:0px;padding:10px =
+25px;padding-top:0px;padding-right:0px;padding-bottom:0px;padding-left:0px;=
+word-break:break-word;">
+                 =20
+      <div =
+style=3D"font-family:ui-sans-serif, sans-serif;font-size:16px;letter-spacin=
+g:0px;line-height:24px !important;text-align:left;color:#ffffff;"><span>&nb=
+sp;</span></div>
+   =20
+                </td>
+              </tr>
+           =20
+        </tbody>
+      </table>
+   =20
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   =20
+      </div>
+   =20
+          <!--[if mso | IE]></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       =20
+      </div>
+   =20
+     =20
+      <!--[if mso | =
+IE]></td></tr></table></td></tr></table><![endif]-->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       =20
+      </div>
+   =20
+     =20
+      <!--[if mso | IE]></td></tr></table><!=
+[endif]-->
+   =20
+   =20
+      </div>
+   =20
+  </body>
+</html>
+ =20
+
+--7x2w1vgtv7r--
