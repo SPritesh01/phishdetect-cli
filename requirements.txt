@@ -1,0 +1,6 @@
+rich==13.7.1
+reportlab==4.2.5
+stix2==3.0.1
+tldextract==5.1.2
+idna==3.10
+oletools==0.60.2
